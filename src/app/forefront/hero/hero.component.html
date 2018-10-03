@@ -1,0 +1,18 @@
+<div class="container" *ngIf="hero" itsemscope itemtype="http://schema.org/Product">
+  <div class="hero-left">
+    <img [src]="hero.thumbnail" *ngIf="hero.thumbnail" class="featured-image" alt="{{hero.title}}" itemprop="image">
+    <img src="../../../assets/images/placeholder.jpeg" *ngIf="!hero.thumbnail" class="featured-image" alt="{{hero.title}}"
+      itemprop="image">
+  </div>
+  <div class="hero-right">
+    <h2 itemprop="name">{{ hero.title }}</h2>
+    <meta itemprop="heroPower" content="%">
+    <p itemprop="power">{{ hero.power | percent }}</p>
+    <p>{{ hero.description }}</p>
+    <iframe [src]="safeUrl" frameborder="0" allowfullscreen>
+    </iframe>
+    <div>
+      <button mat-raised-button (click)="goBack()">Return</button>
+    </div>
+  </div>
+</div>

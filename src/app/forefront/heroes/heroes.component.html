@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="grid">
+    <div class="grid-tile" *ngFor="let hero of heroes">
+      <mat-card routerLink="/hero/{{ hero.id }}" class="hero" itemscope itemtype="http://schema.org/Product">
+          <img [src]="getHeroImage(hero)" alt="{{ hero.title }}" itemprop="image">
+          <div class="hero-content">
+            <h3>
+              <a routerLink="/hero/hero.id" itemprop="name">
+                {{ hero.title }}
+              </a>
+            </h3>
+            <meta itemprop="heroRating" content="%" />
+            <div class="rating" itemprop="rating">
+                Power: {{ hero.power | percent }}
+            </div>
+          </div>
+        </mat-card>
+    </div>
+    <p class="block-center" *ngIf="!(heroes?.length)">
+
+    </p>
+  </div>
+</div>
