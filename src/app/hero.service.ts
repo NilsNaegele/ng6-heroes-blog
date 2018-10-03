@@ -18,7 +18,7 @@ export class HeroService {
       console.error(error);
       console.log(`${operation} failed: ${error.message}`);
       return of(result as T);
-    }
+    };
   }
 
   constructor(private http: HttpClient) { }
