@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { Hero } from '../../models/hero';
 import { HeroService } from '../../hero.service';
+import { GlobalService } from '../../services/global.service';
 
 
 @Component({
@@ -10,11 +13,19 @@ import { HeroService } from '../../hero.service';
 })
 export class HeroesComponent implements OnInit {
   heroes: Hero[] = [];
+  searchTerm: string;
 
-  constructor(private heroService: HeroService) { }
+  constructor(private heroService: HeroService,
+              private globalService: GlobalService,
+              private router: Router) {
+                this.globalService.searchTerm.subscribe((term) => this.searchTerm = term);
+              }
 
   ngOnInit() {
     this.getHeroes();
+    if (this.router.url.includes('heroes')) {
+      this.globalService.searchTerm.next('');
+    }
   }
 
   getHeroes() {

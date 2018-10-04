@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Post } from '../../models/post';
 import { PostService } from '../../post.service';
+import { GlobalService } from '../../services/global.service';
 
 
 @Component({
@@ -11,11 +13,21 @@ import { PostService } from '../../post.service';
 })
 export class PostsComponent implements OnInit {
   posts: Post[] = [];
+  searchTerm: string;
 
-  constructor(private postService: PostService) { }
+  constructor(private postService: PostService,
+              private globalService: GlobalService,
+              private router: Router) {
+                this.globalService.searchTerm.subscribe((term) => {
+                  this.searchTerm = term;
+                });
+              }
 
   ngOnInit() {
     this.getPosts();
+    if (this.router.url.includes('blog')) {
+      this.globalService.searchTerm.next('');
+    }
   }
 
   getPosts() {

@@ -21,6 +21,7 @@ import { AboutComponent } from './forefront/about/about.component';
 import { TruncatePipe } from './pipes/truncate.pipe';
 import { SortPipe } from './pipes/sort.pipe';
 import { SafeHtmlPipe } from './pipes/safe-html.pipe';
+import { SearchPipe } from './pipes/search.pipe';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { SafeHtmlPipe } from './pipes/safe-html.pipe';
     AboutComponent,
     TruncatePipe,
     SortPipe,
-    SafeHtmlPipe
+    SafeHtmlPipe,
+    SearchPipe
   ],
   imports: [
     BrowserModule,
