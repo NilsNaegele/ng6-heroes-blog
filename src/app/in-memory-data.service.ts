@@ -95,21 +95,87 @@ export class InMemoryDataService implements InMemoryDbService {
       date: '10.04.2018',
       imageURL: 'https://ng5-experience.firebaseapp.com/assets/images/sun.jpg',
       body: `
-      Interpolation:
+      INTERPOLATION:
+
+      import { Component } from '@angular/core';
+
+      @Component({
+      selector: 'app-root',
+      template: \`
+            <h1>{{ title }}</h1>
+            <h2>My favorite hero is {{ myHero }}</h2>
+      \`
+      })
+      export class AppComponent {
+      title = 'Tour of Heroes';
+      myHero = 'Flash';
+      }
+
+
+      LOOPING:
 
       import { Component } from '@angular/core';
 
       @Component({
         selector: 'app-root',
         template: \`
-            <h1>{{ title }}</h1>
-            <h2>My favorite hero is: {{ myHero }}</h2>
+                  <h1>{{ title }}</h1>
+                  <h2>My favorite hero is {{ myHero }}</h2>
+                  <ul>
+                      <li *ngFor="let hero of heroes">
+                          {{ hero }}
+                      </li>
+                  </ul>
         \`
       })
       export class AppComponent {
         title = 'Tour of Heroes';
-        myHero = 'Flash';
+        heroes = ['Flash', 'Wonderwoman', 'Superman', 'Spiderman'];
+        myHero = this.heroes[0];
       }
+
+
+      HERO CLASS:
+
+      export class Hero {
+        constructor(public id: number, public name: string) {}
+    }
+
+
+    USE HERO CLASS:
+
+    import { Component } from '@angular/core';
+    import { Hero } from './hero';
+
+    @Component({
+      selector: 'app-root',
+      template: \`
+                <h1>{{ title }}</h1>
+                <h2>My favorite hero is {{ myHero.name }}</h2>
+                <p>Heroes:</p>
+                <ul>
+                    <li *ngFor="let hero of heroes">
+                        {{ hero.name }}
+                    </li>
+                </ul>
+      \`
+    })
+    export class AppComponent {
+      title = 'Tour of Heroes';
+      heroes = [
+            new Hero(1, 'Flash'),
+            new Hero(13, 'Wonderwoman'),
+            new Hero(15, 'Superman'),
+            new Hero(42, 'Spiderman')
+          ];
+      myHero = this.heroes[0];
+    }
+
+
+    CONDITIONAL STATEMENT:
+
+    <p *ngIf="heroes.length > 3">We are many Open Source Heroes!</p>
+
       `
         }
     ];
