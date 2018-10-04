@@ -1,3 +1,22 @@
-<p>
-  posts works!
-</p>
+<div class="container">
+        <mat-card *ngFor="let post of posts | appSort:['date']" routerLink="/blog/{{ post.id }}" class="post" itemscope itemtype="http://schema.org/Article">
+            <img [src]="getPostImage(post)" alt="{{ post.title }}" itemprop="image">
+            <div class="post-content">
+              <h3>
+                <a routerLink="/blog/{{ post.id }}" itemprop="headline">
+                  {{ post.title }}
+                </a>
+              </h3>
+              <div class="date" itemprop="datePublished">
+                    {{ post.date | date }}
+              </div>
+              <p>
+                <span [innerHTML]="post.body | appTruncate:200" itemProp="articleBody"></span>
+                <button mat-button routerLink="/blog/{{ post.id }}">Read More...</button>
+              </p>
+            </div>
+          </mat-card>
+          <p class="block-center" *ngIf="!(posts?.length)">
+              No posts
+          </p>
+</div>

@@ -1,3 +1,13 @@
-<p>
-  post works!
-</p>
+<div class="container" *ngIf="post" itemscope itemtype="http://schema.org/Article">
+  <div class="center post-header">
+    <img [src]="post.imageURL" *ngIf="post.imageURL" class="thumbnail" alt="{{post.title}}" itemprop="image">
+    <h2 itemprop="headline">{{ post.title }}</h2>
+    <p>Published <span itemprop="datePublished">{{ post.date | date }}</span></p> 
+  </div>
+    <pre class="pre">
+      <code class="code">
+          {{ post.body }}
+      </code>
+    </pre>
+    <button mat-raised-button (click)="goBack()">Return</button>
+</div>

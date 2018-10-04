@@ -18,6 +18,10 @@ import { PostComponent } from './forefront/post/post.component';
 import { SearchResultsComponent } from './forefront/search-results/search-results.component';
 import { AboutComponent } from './forefront/about/about.component';
 
+import { TruncatePipe } from './pipes/truncate.pipe';
+import { SortPipe } from './pipes/sort.pipe';
+import { SafeHtmlPipe } from './pipes/safe-html.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +30,10 @@ import { AboutComponent } from './forefront/about/about.component';
     PostsComponent,
     PostComponent,
     SearchResultsComponent,
-    AboutComponent
+    AboutComponent,
+    TruncatePipe,
+    SortPipe,
+    SafeHtmlPipe
   ],
   imports: [
     BrowserModule,

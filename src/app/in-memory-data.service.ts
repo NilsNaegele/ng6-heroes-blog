@@ -1,4 +1,5 @@
 import { InMemoryDbService } from 'angular-in-memory-web-api';
+import { Post } from './models/post';
 
 
 export class InMemoryDataService implements InMemoryDbService {
@@ -66,6 +67,52 @@ export class InMemoryDataService implements InMemoryDbService {
         description: `Half-human and half-atlantean, Namor the sub-mariner was one of the earliest superheroes in the Marvel universe. The stereotypical antihero, his short fuse and long list of superpowers would make him a formidable foe.`,
         video: `https://www.youtube.com/embed/V5QPnqgt4OE` },
     ];
-    return { heroes };
+    const posts:  Post[] = [
+      {
+      id: 4,
+      title: 'Component Interaction',
+      date: '10.07.2018',
+      imageURL: 'https://ng5-experience.firebaseapp.com/assets/images/unconditionallove.jpg',
+      body: '...'
+      },
+      {
+      id: 3,
+      title: 'Lifecycle Hooks',
+      date: '10.06.2018',
+      imageURL: 'https://ng5-experience.firebaseapp.com/assets/images/running.jpg',
+      body: '...'
+      },
+      {
+      id: 2,
+      title: 'Template Syntax',
+      date: '10.05.2018',
+      imageURL: 'https://ng5-experience.firebaseapp.com/assets/images/github1.png',
+      body: '...'
+        },
+      {
+      id: 1,
+      title: 'Displaying Data',
+      date: '10.04.2018',
+      imageURL: 'https://ng5-experience.firebaseapp.com/assets/images/sun.jpg',
+      body: `
+      Interpolation:
+
+      import { Component } from '@angular/core';
+
+      @Component({
+        selector: 'app-root',
+        template: \`
+            <h1>{{ title }}</h1>
+            <h2>My favorite hero is: {{ myHero }}</h2>
+        \`
+      })
+      export class AppComponent {
+        title = 'Tour of Heroes';
+        myHero = 'Flash';
+      }
+      `
+        }
+    ];
+    return { heroes, posts };
   }
 }
