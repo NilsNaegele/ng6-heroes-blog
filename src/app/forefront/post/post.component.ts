@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Title, Meta } from '@angular/platform-browser';
+
+import { AngularFireDatabase } from 'angularfire2/database';
+
 import { Location } from '@angular/common';
 import { Post } from '../../models/post';
-import { PostService } from '../../post.service';
+
 
 @Component({
   selector: 'app-post',
@@ -10,11 +14,14 @@ import { PostService } from '../../post.service';
   styleUrls: ['./post.component.scss']
 })
 export class PostComponent implements OnInit {
-  post: Post;
+  post: any;
+  postContent: any;
 
-  constructor(private route: ActivatedRoute,
+  constructor(private db: AngularFireDatabase,
+              private route: ActivatedRoute,
               private location: Location,
-              private postService: PostService) { }
+              private title: Title,
+              private meta: Meta) { }
 
   ngOnInit() {
     this.getHero();
@@ -22,8 +29,19 @@ export class PostComponent implements OnInit {
 
   getHero(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.postService.getPost(id).subscribe(post => {
-      this.post = post;
+    this.postContent = this.db.list('/posts', ref => ref.orderByChild('id').equalTo(id));
+    this.postContent.valueChanges().subscribe((p) => {
+      if (p[0].published) {
+        this.post = p[0];
+        this.title.setTitle(this.post.title);
+        this.meta.updateTag({ content: 'View ' + this.post.title }, 'name=\'description\'');
+      } else {
+        this.post = {
+          title: 'Post not found',
+          description: ''
+        };
+      }
+
     });
   }
 

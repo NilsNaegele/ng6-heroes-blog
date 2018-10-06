@@ -7,7 +7,7 @@
   <div class="hero-right">
     <h2 itemprop="name">{{ hero.title }}</h2>
     <meta itemprop="heroPower" content="%">
-    <p itemprop="power">{{ hero.power | percent }}</p>
+    <p itemprop="power">Power: {{ hero.power | percent }}</p>
     <p>{{ hero.description }}</p>
     <iframe [src]="safeUrl" frameborder="0" allowfullscreen>
     </iframe>

@@ -1,0 +1,32 @@
+{
+    "posts": [
+    {
+    "id": 4,
+    "title": "Component Interaction",
+    "date": "10.07.2018",
+    "imageURL": "https://ng5-experience.firebaseapp.com/assets/images/unconditionallove.jpg",
+    "body": "INTERACT ..."
+    },
+    {
+    "id": 3,
+    "title": "Lifecycle Hooks",
+    "date": "10.06.2018",
+    "imageURL": "https://ng5-experience.firebaseapp.com/assets/images/running.jpg",
+    "body": "YOLO ..."
+    },
+    {
+    "id": 2,
+    "title": "Template Syntax",
+    "date": "10.05.2018",
+    "imageURL": "https://ng5-experience.firebaseapp.com/assets/images/github1.png",
+    "body": "INTERPOLATION ..."
+      },
+    {
+    "id": 1,
+    "title": "Displaying Data",
+    "date": "10.04.2018",
+    "imageURL": "https://ng5-experience.firebaseapp.com/assets/images/sun.jpg",
+    "body": "INTERPOLATION ..."
+    }
+  ]
+}

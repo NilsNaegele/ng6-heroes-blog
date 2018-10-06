@@ -1,5 +1,5 @@
 <div class="container">
-        <mat-card *ngFor="let post of posts | appSearch: searchTerm | appSort:['date']" routerLink="/blog/{{ post.id }}" class="post" itemscope itemtype="http://schema.org/Article">
+        <mat-card *ngFor="let post of posts | async | appSearch: searchTerm | appSort:['+date']" routerLink="/blog/{{ post.id }}" class="post" itemscope itemtype="http://schema.org/Article">
             <img [src]="getPostImage(post)" alt="{{ post.title }}" itemprop="image">
             <div class="post-content">
               <h3>
@@ -16,7 +16,7 @@
               </p>
             </div>
           </mat-card>
-          <p class="block-center" *ngIf="!(posts?.length)">
+          <p class="block-center" *ngIf="searchTerm && !(posts | async | appSearch: searchTerm)?.length">
               No posts
           </p>
 </div>
