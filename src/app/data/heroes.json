@@ -87,28 +87,44 @@
     "title": "Component Interaction",
     "date": "10.07.2018",
     "imageURL": "https://ng5-experience.firebaseapp.com/assets/images/unconditionallove.jpg",
-    "body": "INTERACT ..."
+    "body": "INTERACT ...",
+    "published": true
     },
     {
     "id": 3,
     "title": "Lifecycle Hooks",
     "date": "10.06.2018",
     "imageURL": "https://ng5-experience.firebaseapp.com/assets/images/running.jpg",
-    "body": "YOLO ..."
+    "body": "YOLO ...",
+    "published": true
     },
     {
     "id": 2,
     "title": "Template Syntax",
     "date": "10.05.2018",
     "imageURL": "https://ng5-experience.firebaseapp.com/assets/images/github1.png",
-    "body": "INTERPOLATION ..."
+    "body": "INTERPOLATION ...",
+    "published": true
       },
     {
     "id": 1,
     "title": "Displaying Data",
     "date": "10.04.2018",
     "imageURL": "https://ng5-experience.firebaseapp.com/assets/images/sun.jpg",
-    "body": "INTERPOLATION ..."
+    "body": "INTERPOLATION ...",
+    "published": true
+    }
+  ],
+  "pages": [
+    {
+      "url": "http://nilsnaegele.com",
+      "dateUpdated": "10.07.2018",
+      "rDateUpdated": "10.06.2018",
+      "title": "this is the title of the page",
+      "body": "this is the body",
+      "published": true,
+      "updatedBy": "Nils",
+      "entityKey": "1234567890"
     }
   ]
 }

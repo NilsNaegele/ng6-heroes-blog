@@ -17,7 +17,7 @@ const routes: Routes = [
           path: '',
           children: [
             { path: 'add-page', component: AddPageComponent },
-            { path: 'add- post', component: AddPostComponent },
+            { path: 'add-post', component: AddPostComponent },
             { path: 'add-hero', component: AddHeroComponent },
             { path: 'page-approval', component: AddPageComponent },
             { path: 'post-approval', component: AddPostComponent },
