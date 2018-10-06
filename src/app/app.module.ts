@@ -2,15 +2,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 
 import * as firebase from 'firebase';
 
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './in-memory-data.service';
-
 import { MaterialComponentsModule } from './material-components.module';
 import { AppRoutingModule } from './app-routing.module';
+import { SharedModule } from './shared.module';
 
 import { environment } from '../environments/environment';
 import { AngularFireModule } from 'angularfire2';
@@ -42,25 +39,19 @@ firebase.initializeApp(environment.firebase);
     PostComponent,
     SearchResultsComponent,
     AboutComponent,
-    TruncatePipe,
-    SortPipe,
-    SafeHtmlPipe,
-    SearchPipe,
     LoginComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase, 'ng6-heroes-blog'),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     BrowserAnimationsModule,
     FormsModule,
-    HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
-    ),
     AppRoutingModule,
-    MaterialComponentsModule
+    MaterialComponentsModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

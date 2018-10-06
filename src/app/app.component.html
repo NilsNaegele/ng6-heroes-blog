@@ -15,8 +15,15 @@
       <li class="search-nav">
         <mat-icon (click)="mobilenav.close()" routerLink="/search" class="color-main">search</mat-icon>
       </li>
+      <li *ngIf="(user | async)?.displayName" class="user-nav">
+        <img src="{{ (user | async)?.photoURL }}" class="user-photo" (click)="mobilenav.close()" [matMenuTriggerFor]="userMenu">
+        <mat-menu #userMenu="matMenu">
+            <button mat-menu-item routerLink="admin">My Admin</button>
+            <button mat-menu-item (click)="logout()">Logout</button>
+        </mat-menu>
+      </li>
       <li>
-        <button mat-raised-button (click)="login()">Login</button>
+        <button mat-raised-button (click)="login()" *ngIf="!(user | async)?.photoURL">Login</button>
       </li>
     </ul>
 </mat-toolbar>

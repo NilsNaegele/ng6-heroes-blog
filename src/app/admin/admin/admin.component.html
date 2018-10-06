@@ -1,0 +1,34 @@
+<mat-toolbar *ngIf="currentAdmin">
+  <h3>ng6-heroes-blog</h3>
+  <span class="fill-space"></span>
+    <div class="login">
+      <img *ngIf="(user | async)?.photoURL" src="{{ (user | async)?.photoURL }}" class="admin-photo" [matMenuTriggerFor]="adminMenu">
+      <img *ngIf="!(user | async)?.photoURL" src="../../../assets/images/placeholder.jpeg" class="admin-photo" [matMenuTriggerFor]="adminMenu">
+      <mat-menu #adminMenu="matMenu">
+              <button mat-menu-item (click)="logout()">Logout</button>
+      </mat-menu>
+    </div>
+</mat-toolbar>
+<mat-sidenav-container *ngIf="currentAdmin">
+      <mat-sidenav mode="side" opened="true">
+            <mat-list class="admin-nav">
+                <mat-list-item [ngClass]="{'selected': router.url === '/admin'}"
+                                routerLink="/admin">
+                <mat-icon>dashboard</mat-icon> Dashboard  
+                </mat-list-item>
+                <mat-list-item [ngClass]="{'selected': router.url.includes('/admin/posts')}"
+                                routerLink="/admin/posts">
+                <mat-icon>class</mat-icon> Posts
+                </mat-list-item>
+                <mat-list-item [ngClass]="{'selected': router.url.includes('/admin/pages')}"
+                                routerLink="/admin/pages">
+                <mat-icon>class</mat-icon> Pages
+                </mat-list-item>
+                <mat-list-item [ngClass]="{'selected': router.url.includes('/admin/heroes')}"
+                                routerLink="/admin/heroes">
+                <mat-icon>account_circle</mat-icon> Heroes
+                </mat-list-item>
+            </mat-list>
+      </mat-sidenav>
+      <router-outlet></router-outlet>
+</mat-sidenav-container>

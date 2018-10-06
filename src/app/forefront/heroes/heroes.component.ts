@@ -28,9 +28,9 @@ export class HeroesComponent implements OnInit {
               private meta: Meta) {
                 this.heroes = db.list('/heroes',
                      ref => ref.orderByChild('power').limitToLast(20)).valueChanges();
-                     const snackBarRef = this.snackBar.open(`Heroes display`, 'View Heroes', {
-                      duration: 2000
-                    });
+                    //  const snackBarRef = this.snackBar.open(`Heroes display`, 'View Heroes', {
+                    //   duration: 2000
+                    // });
                 this.globalService.searchTerm.subscribe((term) => this.searchTerm = term);
               }
 
