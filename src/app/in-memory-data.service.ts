@@ -22,7 +22,7 @@ export class InMemoryDataService implements InMemoryDbService {
         description: `Bitten by a radioactive spider, Peter Parker’s arachnid abilities give him amazing powers he uses to help others, even while his personal life continues to offer plenty of obstacles.`,
         video: 'https://www.youtube.com/embed/hf26Usl_Ijo' },
       { id: 6, title: 'Thor', power: 1.1, thumbnail: 'https://static0.srcdn.com/wordpress/wp-content/uploads/2017/02/Thor-The-Dark-World-Convergence.jpg',
-        description: `A Marvel superhero, Thor is the Norse God of thunder. Thor is not only invincible in almost every sense of the word, but he takes the meaning of “skilled warrior” to an entirely new level. Moreover, he has a hammer that gives him almost absolute control over space and time. I`,
+        description: `A Marvel superhero, Thor is the Norse God of thunder. Thor is not only invincible in almost every sense of the word, but he takes the meaning of “skilled warrior” to an entirely new level. Moreover, he has a hammer that gives him almost absolute control over space and time.`,
         video: `https://www.youtube.com/embed/ue80QwXMRHg` },
       { id: 7, title: 'Goku', power: 0.1, thumbnail: 'https://avatarfiles.alphacoders.com/761/76105.png',
         description: `We know this isn’t going to make us any friends, but ever since “super sayain” became a household word, Goku found his way somewhere to the top of the really powerful superheroes list – albeit a somewhat non-standard superhero at that. But seriously, here we have a character essentially constructed on the assumption that there is no upper power limit whatsoever.`,
@@ -87,7 +87,133 @@ export class InMemoryDataService implements InMemoryDbService {
       title: 'Template Syntax',
       date: '10.05.2018',
       imageURL: 'https://ng5-experience.firebaseapp.com/assets/images/github1.png',
-      body: '...'
+      body: `
+      INTERPOLATION:
+
+      <p>My current hero name is {{ currentHero.name }}</p>
+      <h3>
+              {{ title }}
+              <img src="{{ heroImageUrl }}" style="height: 100px">
+      </h3>
+      <p>The sum of 1 + 1 is {{ 1 + 1 }}</p>
+      <p>The sum of 1 + 1 is not {{ 1 + 1 + getNumber() }}</p>
+
+
+      TEMPLATE EXPRESSIONS EXPRESSION CONTEXT:
+
+      {{ title }}
+      <span [hidden]="isUnchanged">changed</span>
+      <div *ngFor="let hero of heroes">{{ hero.name }}</div>
+      <input #heroInput (keyup)="0"> {{ heroInput.value }}
+
+
+      TEMPLATE STATEMENTS STATEMENT CONTEXT:
+
+      <button (click)="deleteHero()">Delete Hero</button>
+      <button (click)="onSaveHer($event)">Save Her</button>
+      <button *ngFor="let hero of heroes" (click)="deleteHero(hero)">
+      {{ hero.name }}
+      </button>
+      <form #heroForm (ngSubmit)="onSubmit(heroForm)">...</form>
+
+
+      BINDING SYNTAX OVERVIEW:
+
+      // one way from component to view
+      {{ expression }}
+      [target]="expression"
+      bind-target="expression"
+      // one way from view to component
+      (target)="statement"
+      on-target="statement"
+      // two way
+      [(target)]="expression"
+      bindon-target="expression"
+
+
+      NEW MENTAL MODEL:
+
+      <div [class.special]="isSpecial">New Mental Model</div>
+      <app-hero-detail></app-hero-detail>
+      <button [disabled]="isUnchanged">Save Her</button>
+      <img [src]="heroImageUrl">
+      <app-hero-detail [hero]="currentHero"></app-hero-detail>
+      <div [ngClass]="{ 'special': isSpecial }">special</div>
+      <button (click)="onSave()">Save</button>
+      <app-hero-detail (deleteRequest)="deleteHero()"></app-hero-detail>
+      <div (myClick)="clicked=$event" clickable>Click Me</div>
+      {{ clicked }}
+      <div>
+            Hero Name:
+            <input [(ngModel)]="name"> {{ name }}
+      </div>
+      <button [attr.aria-label]="help">Help</button>
+      <div [class.red]="isRed">Favorite</div>
+      <button [style.color]="isSpecial ? 'blue' : 'red'">Special</button>
+
+
+      BINDING TARGETS:
+
+      // Property
+      <img [src]="heroImageUrl">
+      <app-hero-detail [hero]="currentHero"></app-hero-detail>
+      <div [ngClass]="{'special': isSpecial }">special</div>
+
+      // Event
+      <button (click)="onSave()">Save</button>
+      <app-hero-detail (deleteRequest)="deleteHero()"></app-hero-detail>
+      <div (myClick)="clicked=$event" clickable>Click Me</div>
+
+      // Two Way
+      <input [(ngModel)]="name">
+
+      // Attribute
+      <button [attr.aria-label]="help">Help</button>
+
+      // Class
+      <div [class.special]="isSpecial">Special</div>
+
+      // Style
+      <button [style.color]="isSpecial ? 'red' : 'green'">special</button>
+
+
+      PROPERTY BINDING:
+
+      <img [src]="heroImageUrl">
+      <img bind-src="heroImageUrl"> // canonical form
+      <button [disabled]="isUnchanged">Cancel is disabled</button>
+      <div [ngClass]="classes">[ngClass] binding to classes property</div>
+      <app-hero-detail [hero]="currentHero"></app-hero-detail>
+      <app-hero-detail prefix="You are my" [hero]="currentHero"></app-hero-detail>
+
+      <p><img src="{{ heroImageUrl }}"> is the <i>interpolated</i> image.</p>
+      <p><img [src]="heroImageUrl"> is the <i>property bound</i> image.</p>
+
+      <p><span>"{{ title }}" is the <i>interpolated</i> title.</span></p>
+      <p><span [innerHTML]="title"></span> is the <i>property bound</i> title.</p>
+
+      evilTitle = 'Template <script>alert("evil never sleeps")</script>Syntax';
+
+      <p><span>"{{ evilTitle }}" is the <i>interpolated</i> evil title.</span></p>
+      <p><span [innerHTML]="evilTitle"></span> <i>is the property bound</i> evil title.</p>
+
+
+      ATTRIBUTE BINDING:
+
+      <table border="1">
+          <tr><td [attr.colspan]="1 + 1">One-Two</td></tr>
+          <tr><td>Three</td><td>Four</td></tr>
+      </table>
+      <button [attr.aria-label]="actionName">{{ actionName }}</button>
+
+
+      CLASS BINDING:
+
+      <div class="nice curly special" [class]="niceCurly">Nice curly</div>
+      <div [class.special]="isSpecial">This class binding is special</div>
+      <div class="special" [class.special]="!isSpecial">This one is not so special</div>
+
+      `
         },
       {
       id: 1,
