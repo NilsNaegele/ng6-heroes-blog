@@ -17,6 +17,7 @@ const routes: Routes = [
     { path: 'blog', component: PostsComponent },
     { path: 'about', component: AboutComponent },
     { path: 'search', component: SearchResultsComponent },
+    { path: 'admin', loadChildren: './admin/admin.module#AdminModule' },
     { path: '**', component: HeroesComponent }
 
 ];

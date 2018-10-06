@@ -1,6 +1,6 @@
 <div class="container">
   <div class="grid">
-    <div class="grid-tile" *ngFor="let hero of heroes | appSearch:searchTerm">
+    <div class="grid-tile" *ngFor="let hero of heroes | async | appSearch:searchTerm | appSort:['title']">
       <mat-card routerLink="/hero/{{ hero.id }}" class="hero" itemscope itemtype="http://schema.org/Product">
           <img [src]="getHeroImage(hero)" alt="{{ hero.title }}" itemprop="image">
           <div class="hero-content">
@@ -16,7 +16,7 @@
           </div>
         </mat-card>
     </div>
-    <p class="block-center" *ngIf="!(heroes?.length)">
+    <p class="block-center" *ngIf="searchTerm && !(heroes | async | appSearch: searchTerm)?.length">
         No heroes!
     </p>
   </div>

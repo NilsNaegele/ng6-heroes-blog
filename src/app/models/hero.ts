@@ -5,4 +5,5 @@ export class Hero {
     thumbnail: string;
     description: string;
     video: string;
+    published?: boolean;
   }
