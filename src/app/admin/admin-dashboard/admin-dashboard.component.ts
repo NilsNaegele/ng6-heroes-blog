@@ -17,6 +17,7 @@ export class AdminDashboardComponent implements OnInit {
   approvalsTotal: number;
   postsLength: number;
   pagesLength: number;
+  heroesLength: number;
   currentAdmin: any;
   columns: any;
 
@@ -33,6 +34,10 @@ export class AdminDashboardComponent implements OnInit {
 
                 this.pages.subscribe((p) => {
                   this.pagesLength = p.length;
+                });
+
+                this.heroes.subscribe((h) => {
+                  this.heroesLength = h.length;
                 });
 
                 this.columns = 3;

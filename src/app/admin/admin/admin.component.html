@@ -5,7 +5,7 @@
       <img *ngIf="(user | async)?.photoURL" src="{{ (user | async)?.photoURL }}" class="admin-photo" [matMenuTriggerFor]="adminMenu">
       <img *ngIf="!(user | async)?.photoURL" src="../../../assets/images/placeholder.jpeg" class="admin-photo" [matMenuTriggerFor]="adminMenu">
       <mat-menu #adminMenu="matMenu">
-              <button mat-menu-item (click)="logout()">Logout</button>
+              <button mat-menu-item (click)="logOut()">Logout</button>
       </mat-menu>
     </div>
 </mat-toolbar>
@@ -22,7 +22,7 @@
                 </mat-list-item>
                 <mat-list-item [ngClass]="{'selected': router.url.includes('/admin/pages')}"
                                 routerLink="/admin/pages">
-                <mat-icon>class</mat-icon> Pages
+                <mat-icon>description</mat-icon> Pages
                 </mat-list-item>
                 <mat-list-item [ngClass]="{'selected': router.url.includes('/admin/heroes')}"
                                 routerLink="/admin/heroes">

@@ -126,5 +126,12 @@
       "updatedBy": "Nils",
       "entityKey": "1234567890"
     }
+  ],
+  "admins": [
+    {
+      "name": "Nils-Holger Nägele",
+      "email": "nilsholger1307@gmail.com",
+      "role": "super-admin"
+    }
   ]
 }

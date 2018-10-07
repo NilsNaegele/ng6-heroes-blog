@@ -11,11 +11,19 @@
       </mat-grid-tile>
       <mat-grid-tile colspan="1" rowspan="1">
           <mat-card routerLink="/admin/pages">
-            <mat-icon>class</mat-icon>
+            <mat-icon>description</mat-icon>
             <h4 *ngIf="pages | async">{{ pagesLength }} Page<span *ngIf="pagesLength !== 1">s</span></h4>
             <button mat-raised-button routerLink="/admin/add-page">Add a page</button>
           </mat-card>
       </mat-grid-tile>
+      <mat-grid-tile colspan="1" rowspan="1">
+          <mat-card routerLink="/admin/heroes">
+            <mat-icon>group_work</mat-icon>
+            <h4 *ngIf="heroes | async">{{ heroesLength }} Hero<span *ngIf="heroesLength !== 1">es</span></h4>
+            <button mat-raised-button routerLink="/admin/add-hero">Add a hero</button>
+          </mat-card>
+      </mat-grid-tile>
+      
 
     </mat-grid-list> 
 </div>

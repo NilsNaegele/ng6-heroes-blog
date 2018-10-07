@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-about',
@@ -6,11 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./about.component.scss']
 })
 export class AboutComponent implements OnInit {
-  title = 'ng6-heroes-blog';
+  header = 'ng6-heroes-blog';
 
-  constructor() { }
+  constructor(private title: Title, private meta: Meta) { }
 
   ngOnInit() {
+    this.title.setTitle('About');
+    this.meta.updateTag({ content: 'View about page'}, 'name=\'description\'');
   }
 
 }
