@@ -16,6 +16,8 @@ import { AdminComponent } from './admin/admin.component';
 import { AdminRoutingModule } from './admin-routing.module';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared.module';
+import { ApproveDialogComponent } from './approve-dialog/approve-dialog.component';
+import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 
 @NgModule({
   imports: [
@@ -29,6 +31,7 @@ import { SharedModule } from '../shared.module';
   ],
   declarations: [AdminDashboardComponent, AdminPostsComponent, AdminPagesComponent,
                  AdminHeroesComponent, AddPostComponent, AddHeroComponent,
-                 AddPageComponent, AdminComponent]
+                 AddPageComponent, AdminComponent, ApproveDialogComponent, DeleteDialogComponent],
+  entryComponents: [DeleteDialogComponent, ApproveDialogComponent]
 })
 export class AdminModule { }

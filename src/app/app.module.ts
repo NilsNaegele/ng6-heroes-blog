@@ -27,6 +27,7 @@ import { SortPipe } from './pipes/sort.pipe';
 import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 import { SearchPipe } from './pipes/search.pipe';
 import { LoginComponent } from './forefront/login/login.component';
+import { StopPropagationDirective } from './directives/stop-propagation.directive';
 
 firebase.initializeApp(environment.firebase);
 
@@ -39,7 +40,8 @@ firebase.initializeApp(environment.firebase);
     PostComponent,
     SearchResultsComponent,
     AboutComponent,
-    LoginComponent
+    LoginComponent,
+    StopPropagationDirective
   ],
   imports: [
     BrowserModule,

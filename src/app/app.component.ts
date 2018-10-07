@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { MatSnackBar } from '@angular/material';
+
 import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase';
@@ -20,10 +22,16 @@ export class AppComponent {
               private route: ActivatedRoute,
               private db: AngularFireDatabase,
               private afAuth: AngularFireAuth,
+              private snackBar: MatSnackBar,
               private globalService: GlobalService) {
                 this.user = afAuth.authState;
                 this.user.subscribe((currentUser) => {
                       this.globalService.user.next(currentUser);
+                      if (currentUser) {
+                      const snackBarRef = this.snackBar.open(`Welcome hero: ${currentUser.displayName}`, 'View Hero', {
+                        duration: 2000
+                      });
+                    }
                 });
               }
 

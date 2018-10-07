@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Title, Meta } from '@angular/platform-browser';
+
 import { MatSnackBar } from '@angular/material';
 
 import { AngularFireDatabase } from 'angularfire2/database';
@@ -22,21 +24,25 @@ export class AdminComponent implements OnInit {
               private afAuth: AngularFireAuth,
               private router: Router,
               private globalService: GlobalService,
-              private snackBar: MatSnackBar) {
+              private snackBar: MatSnackBar,
+              private title: Title,
+              private meta: Meta) {
                 this.user = this.afAuth.authState;
               }
 
   ngOnInit() {
+    this.title.setTitle('Admin-Dashboard');
+    this.meta.updateTag({ content: 'View admin dashboard'}, 'name=\'description\'');
     this.currentAdmin = false;
     this.user.subscribe(currentUser => {
       if (!currentUser) {
         this.router.navigateByUrl('login');
         return;
       }
-        if (currentUser.email === 'nilsholger1307@gmail.com') {
+        if (currentUser.email) {
         this.currentAdmin = true;
         this.globalService.admin.next(currentUser);
-        const snackBar = this.snackBar.open('Welcome Admin!', 'OK!', {
+        const snackBar = this.snackBar.open(`Welcome ${currentUser.displayName}!`, 'OK!', {
           duration: 3000
         });
       } else {
